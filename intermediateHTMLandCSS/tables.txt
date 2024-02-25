@@ -1,0 +1,81 @@
+HTML Tables allow you to create two-dimensional tables made of rows and columns. 
+
+BASICS:
+
+Table can be created using <table> </table> 
+
+Although they are not as commonly used as something like a button, some data is best represented by a table making these very useful 
+in some cases. 
+
+Example of a table with 2 headers and 2 data cells (2x2)
+<table>
+  <tr>
+    <th>First Header</th>
+    <th>Second Header</th>
+  </tr>
+  <tr>
+    <td>This is a data cell</td>
+    <td>This is also a data cell!</td>
+  </tr>
+</table>
+
+**<tr> is a table row in the table, <th> is a header just a cell with bold text, <td> is a normal table data cell**
+
+th is usually used on the top of each column as it is for table headers. It works the same was as td but just for headers.
+Header cells also have the scope attribute (which will be explained in the advanced section below) which allows all cells below it
+to be assoicated this makes screen readers able to read off rows or columns for those who cannot see. 
+
+td is basically the smallest element of a table just a regular cell. 
+
+to make a table with 4 coluns we would do: 
+<tr>
+  <td>Hi, I'm your first cell.</td>
+  <td>I'm your second cell.</td>
+  <td>I'm your third cell.</td>
+  <td>I'm your fourth cell.</td>
+</tr>
+------------------------------------------------------------------
+Allowing cells to span multiple rows and columns:
+we can use the rowspan and colspan attributes to make cells span multiple columns or rows. Table headers and cells both have this attribute
+ex adding colspan="2" will allow a header or cell to span 2 columns instead of 1
+------------------------------------------------------------------
+Providing styles to columns:
+HTML has a method of defining styling information for an entire column of data all in one place - the <col> and <colgroup> elements. 
+These exist because it can be a bit annoying and inefficient having to specify styling on columns - wihtout these we would basically 
+have to style each <td> or <th> in the column seperatly or use a weird complex selector (e.g. ":nth-child")
+    ** styling with col and colgroup attributes limits the properties we can use to style. We only have border,background,width and visibility
+       any other style attributes we would have to style individual table cells.
+
+example: ** the <col> and <colgroup> elements are defined right under the <table> element
+<table>
+  <colgroup>
+    <col />
+    <col style="background-color: yellow" />
+  </colgroup>
+  <tr>
+    <th>Data 1</th>
+    <th>Data 2</th>
+  </tr>
+  <tr>
+    <td>Calcutta</td>
+    <td>Orange</td>
+  </tr>
+  <tr>
+    <td>Robots</td>
+    <td>Jazz</td>
+  </tr>
+</table>
+
+   ** here we are effectivley defining 2 "style columns" note that in the <colgroup> there are 2 <col /> tags 1 styled one not
+   we are not styling the first column but we MUST still include the col element for the second row to be styled. If we didnt then
+   it would style the first row instead of the second. 
+   ** if we wanted to style both rows we would just add a span attribute to the single col element shown below:
+   <colgroup>
+  <col style="background-color: yellow" span="2" />
+</colgroup>
+
+   ** also note we can easily style rows by just styling the <tr> elements individually
+
+  
+
+

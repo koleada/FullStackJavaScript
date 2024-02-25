@@ -1,0 +1,97 @@
+What are SVGs at a high level?
+SVGs are a very common image format on the web. They can be a little confusing at first, but once you know how to use them, 
+they are an incredibly powerful tool for creating high-quality, dynamic images for your website.
+
+SVGs are a scalable image format, which means they will easily scale to any size and retain their quality without increasing their 
+filesize. Theyre also very useful if you need to create or modify your images programmatically, because you can change their 
+properties through CSS and JavaScript.
+
+SVGs are often used for:
+Icons
+Graphs/Charts
+Large, simple images
+Patterned backgrounds
+Applying effects to other elements via SVG filter
+----------------------------------------------------------------------------------------------------------------------------------
+SVG - Scalable Vector Graphs
+vector graphics are images defined by math as opposed to normal images which are a grid of pixels (raster graphics).
+
+raster graphics are limited in terms of detail by the size of the pixel grid. To get more detail you need a larger grid which increases
+file size. To increase size of the image the size of the grid also has to increase thus increasing the file size
+
+vector graphics on the other hand, have no grids, just formulas for different shapes and lines hence why these types of images can 
+scale to any size without increasing their file size or image quality. 
+----------------------------------------------------------------
+SVGs are defined in XML (Extensible Markup Language). XML is interoperable with HTML so we can define svg elements within an HTML 
+file. XML is also human readable giving us more control opposed to a JPEG which is stored in binary. 
+------------------------------------------------------------------------------------------------------------------------------------
+DRAWBACKS:
+SVGs are best used for simple images. Infact, they are very unefficent for more complex images such as something that is supposed to 
+look photo realisitic. 
+------------------------------------------------------------------------------------------------------------------------------------
+SVG ANOTOMY:
+Typically, you will not want to create SVGs from scratch in your code. Most often, you will download the file or copy the code either
+from a website or from an image editor that can create them (Adobe Illustrator and Figma are two popular apps that can create SVGs). 
+
+It is very common to tweak some part of an svg once downloaded or created so knowing the different parts of an SVG is very useful.
+
+example of a SVG:
+<div class="container">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100">
+    <rect x=0 y=0 width=100 height=100 fill="burlywood"/>
+    <path d="M 10 10 H 90 V 90 L 10 60" fill="transparent" stroke="black" stroke-width="3"/>
+  <circle cx=50 cy=50 r=20 class="svg-circle"/>
+    <g class="svg-text-group">
+      <text x="20" y="25" rotate="10" id="hello-text">Hello!</text>
+      <use href="#hello-text" x="-10" y="65" fill="white"/>
+    </g>
+</svg>
+</div>
+
+xmlns - stands for XML namespace specfifies the dialect of xml being used in thiws case its the SVG language spec (without this the 
+browser will not reder the image or render it incorrectly)
+
+viewBox- generally speaking, viewbox defines the bounds of the svg. When you have to define the positions of different points of the 
+elements in your SVG, this is what thats referencing. It also defines the aspect ratio and the origin of your SVG. Basically 
+changing any of the 4 viewbox values will either shift the image, make it smaller or larger or otherwise alter the placing and 
+size of elements in the svg. 
+
+class, id - same as HTML makes it easy to target an element with CSS or JS. 
+
+<circle>, <rect>, <path>, and <text> - are defined by the SVG namespace. These are our basic building-blocks. 
+Although you can make extremely complex images with SVG, they are mostly created with just a dozen or so of these basic elements.
+Full list of SVG elements here: https://developer.mozilla.org/en-US/docs/Web/SVG/Element
+
+Many SVG attributes, such as fill and stroke, can be changed in your CSS. Guide to SVG proeprties for use in css found here:
+https://css-tricks.com/svg-properties-and-css/
+-----------------------------------------------------------------------------------------------------------------------------------
+LINKING SVGs:
+
+Method 1:
+Linking SVGs works basically the same way as linking any other image. You can use an HTML image element such as <img>, or link it in 
+your CSS using background-image: url(./my-image.svg). They will still scale properly, but the contents of the SVG will not be 
+accessible from the webpage.
+    Downsides: Does not allow SVG properties to be dynamically changed 
+
+Method 2:
+The alternative is to inline your SVGs by pasting their contents directly into your webpage’s code, rather than linking to 
+it as an image. It will still render correctly, but the SVG’s properties will be visible to your code, which will allow you to alter 
+the image dynamically via CSS or JavaScript.
+    Downsides: makes code harder to read, makes page less cacheable, if SVG is large it mau delay the rest of the HTML from loading
+    ** Some of these drawbacks can be avoided by using a front end JS library like React or a build-tool like webpack 
+-----------------------------------------------------------------------------------------------------------------------------------
+ADDITIONAL RESOUCES: 
+
+free SVG icon libraries: (free svg images with required xml / embeding info)
+https://fonts.google.com/icons
+https://feathericons.com/
+https://thenounproject.com/term/free/
+https://ionic.io/ionicons
+
+Free SVG creators:
+https://yqnn.github.io/svg-path-editor
+https://inkscape.org/
+
+SVG deepdive: 
+https://developer.mozilla.org/en-US/docs/Web/SVG/Tutorial
+
